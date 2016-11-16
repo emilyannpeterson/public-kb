@@ -1,3 +1,8 @@
+{{{
+  "title": "Getting Started with Fons", 
+  "author": "Eric Branner"
+}}}
+
 **Getting Started: How You Can Teach Well Using Fons**
 
 Fons manages the administrative tasks of running a teaching business. Save time and make more money using Fons to schedule, bill, and manage your students. 
@@ -74,7 +79,8 @@ Set your **cancellation policy**. Students that do not have an excused absence o
 
 There is no additional fee for a lesson that can be rescheduled at the teacher’s discretion. The instructor can always override/cancel a lesson charge for any reason. 
 
-**Deposit Information/Getting Paid**
+
+**Deposit Information/Getting Paid**
 
 Fons will automatically deposit all of your processed transactions to your bank account every evening. Enter your ACH information, and you are all set up to get paid! Your first transaction takes one week to process, and after that most charges will clear within 48 hours. 
 

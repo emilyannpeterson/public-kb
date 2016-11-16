@@ -1,3 +1,8 @@
+{{{
+  "title": "How to Add a Client", 
+  "author": "Eric Branner"
+}}}
+
 **How to add a client**
 
 Adding clients is simple using Fons:

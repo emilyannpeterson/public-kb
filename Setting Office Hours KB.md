@@ -1,3 +1,8 @@
+{{{
+  "title": "Setting Your Office Hours", 
+  "author": "Eric Branner"
+}}}
+
 **Setting Your Office Hours**
 
 	
