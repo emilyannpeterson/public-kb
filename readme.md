@@ -25,7 +25,7 @@ Here’s how it works:
 
 **How Much Does Fons Cost?**
 
-Fons is currently in beta, and free of charge to use until our proper launch. Fons will then charge a subscription fee of $30 every 30 days.
+Fons charges a subscription fee of $39.95/month.
 
 Credit card fees are currently 2.9%+$.30 a transaction. There is also a .5% ACH fee for bank transfers. 
 
