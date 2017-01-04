@@ -1,0 +1,2020 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "fons.js",
+    "version": "v1",
+    "contact": {
+      "name": "Fons team",
+      "email": "fons@fons.io",
+      "url": "http://fons.io"
+    }
+  },
+  "host": "https://api.fons.io",
+  "basePath": "/v1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "x-categories": [
+    {
+      "id": "identity",
+      "title": "Identity"
+    },
+    {
+      "id": "invite",
+      "title": "Invite"
+    },
+    {
+      "id": "appointments",
+      "title": "Appointments"
+    },
+    {
+      "id": "availabilities",
+      "title": "Availabilities"
+    },
+    {
+      "id": "billing",
+      "title": "Billing"
+    },
+    {
+      "id": "organizations",
+      "title": "Organizations"
+    },
+    {
+      "id": "clients",
+      "title": "Clients"
+    },
+    {
+      "id": "teachers",
+      "title": "Teachers"
+    },
+    {
+      "id": "referrals",
+      "title": "Referrals"
+    }
+  ],
+  "paths": {
+    "/identity/login": {
+      "x-categoryId": "identity",
+      "post": {
+        "operationId": "globalLogin",
+        "description": "Login",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "children": {
+                  "type": "array"
+                },
+                "roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "token": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "timeZone": {
+                      "type": "string"
+                    },
+                    "parentUserId": {
+                      "type": "string"
+                    },
+                    "icalToken": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/identity/register": {
+      "x-categoryId": "identity",
+      "post": {
+        "operationId": "globalRegister",
+        "description": "Registration",
+        "parameters": [
+          {
+            "name": "organizationName",
+            "in": "body",
+            "description": "organization name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "body",
+            "description": "user name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userEmail",
+            "in": "body",
+            "description": "user email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userPassword",
+            "in": "body",
+            "description": "user password",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userTimeZone",
+            "in": "body",
+            "description": "user time zone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "termsOfServiceAccepted",
+            "in": "body",
+            "description": "terms of service accepted",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "referralToken",
+            "in": "body",
+            "description": "referral token",
+            "required": false,
+            "type": "object"
+          },
+          {
+            "name": "initialDiscountCode",
+            "in": "body",
+            "description": "initial discount code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "trialExpiresAt",
+            "in": "body",
+            "description": "only works for service accounts",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registration",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "children": {
+                  "type": "array"
+                },
+                "roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                },
+                "token": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "timeZone": {
+                      "type": "string"
+                    },
+                    "parentUserId": {
+                      "type": "string"
+                    },
+                    "icalToken": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/identity/forgotPassword": {
+      "x-categoryId": "identity",
+      "post": {
+        "operationId": "globalforgotPassword",
+        "description": "Forgot Password",
+        "parameters": [
+          {
+            "name": "userEmail",
+            "in": "body",
+            "description": "user email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "forgot password"
+          }
+        }
+      }
+    },
+    "/identity/resetPassword": {
+      "x-categoryId": "identity",
+      "post": {
+        "operationId": "globalresetPassword",
+        "description": "Reset Password",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "body",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "password",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "passwordConfirmation",
+            "in": "body",
+            "description": "password confirmation",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Reset Password"
+          }
+        }
+      }
+    },
+    "/identity/changePassword": {
+      "x-categoryId": "identity",
+      "post": {
+        "operationId": "globalchangePassword",
+        "description": "Change Password",
+        "parameters": [
+          {
+            "name": "currentPassword",
+            "in": "body",
+            "description": "current password",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "password",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "passwordConfirmation",
+            "in": "body",
+            "description": "password confirmation",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Password is changed"
+          },
+          "400": {
+            "description": "Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/identity/invite/{inviteToken}": {
+      "x-categoryId": "invite",
+      "get": {
+        "operationId": "getInvite",
+        "description": "get invite",
+        "parameters": [
+          {
+            "name": "inviteToken",
+            "in": "path",
+            "description": "inviteToken",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get invite"
+          },
+          "404": {
+            "description": "Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "acceptAuthenticated",
+        "description": "accept authenticated",
+        "parameters": [
+          {
+            "name": "inviteToken",
+            "in": "path",
+            "description": "inviteToken",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "description": "email",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "password",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "timezone",
+            "in": "body",
+            "description": "timezone",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "accept authenticated"
+          }
+        }
+      }
+    },
+    "/scheduling/appointments/{appointmentId}": {
+      "x-categoryId": "appointments",
+      "get": {
+        "operationId": "getAppointments",
+        "description": "Get appointment by ID",
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "path",
+            "description": "appointment id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get appointment by ID"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putAppointments",
+        "description": "Update appointment by ID",
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "path",
+            "description": "appointment id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update appointment by ID"
+          }
+        }
+      }
+    },
+    "/scheduling/appointments/{appointmentId}/confirm": {
+      "x-categoryId": "appointments",
+      "post": {
+        "operationId": "postAppointmentsConfirm",
+        "description": "Confirm appointment",
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "path",
+            "description": "appointment id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update appointment by ID"
+          }
+        }
+      }
+    },
+    "/scheduling/appointments/{appointmentId}/cancel": {
+      "x-categoryId": "appointments",
+      "post": {
+        "operationId": "postAppointmentsConfirm",
+        "description": "Cancel appointment",
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "path",
+            "description": "appointment id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cancel appointment"
+          }
+        }
+      }
+    },
+    "/scheduling/appointments": {
+      "x-categoryId": "appointments",
+      "get": {
+        "operationId": "aearchAppointments",
+        "description": "Search appointments",
+        "parameters": [
+          {
+            "name": "startsAt",
+            "in": "query",
+            "description": "Starts At",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endsAt",
+            "in": "query",
+            "description": "Ends At",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search appointments",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "appointments": {
+                  "type": "string"
+                },
+                "recurringAppointments": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createAppointment",
+        "description": "Create appointment",
+        "parameters": [
+          {
+            "name": "startsAt",
+            "in": "body",
+            "description": "Starts At",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endsAt",
+            "in": "body",
+            "description": "Ends At",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "teacherId",
+            "in": "body",
+            "description": "Teacher ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "body",
+            "description": "CLient ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "frequency",
+            "in": "body",
+            "description": "Frequency",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "separation",
+            "in": "body",
+            "description": "Separation",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all appointments"
+          }
+        }
+      }
+    },
+    "/scheduling/recurringAppointments/{recurringAppointmentId}/confirm": {
+      "x-categoryId": "appointments",
+      "post": {
+        "operationId": "postRecurringAppointments",
+        "description": "recurring appointment",
+        "parameters": [
+          {
+            "name": "recurringAppointmentId",
+            "in": "path",
+            "description": "recurring appointment id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recurring appointment"
+          }
+        }
+      }
+    },
+    "/scheduling/recurringAppointments/{recurringAppointmentId}": {
+      "x-categoryId": "appointments",
+      "get": {
+        "operationId": "getRecurringAppointments",
+        "description": "recurring appointment",
+        "parameters": [
+          {
+            "name": "recurringAppointmentId",
+            "in": "path",
+            "description": "recurring appointment id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recurring appointment"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putRecurringAppointments",
+        "description": "recurring appointment",
+        "parameters": [
+          {
+            "name": "recurringAppointmentId",
+            "in": "path",
+            "description": "recurring appointment id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "repeatEndsOn",
+            "in": "body",
+            "description": "Repeat Ends On",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recurring update"
+          }
+        }
+      }
+    },
+    "/billing/appointments/{appointmentId}": {
+      "x-categoryId": "appointments",
+      "get": {
+        "operationId": "billingAppointments",
+        "description": "Billing appointment",
+        "parameters": [
+          {
+            "name": "appointmentId",
+            "in": "path",
+            "description": "appointment id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recurring appointment"
+          }
+        }
+      }
+    },
+    "/scheduling/availabilities": {
+      "x-categoryId": "availabilities",
+      "get": {
+        "operationId": "getAvailabilities",
+        "description": "Availabilities",
+        "parameters": [
+          {
+            "name": "teacherId",
+            "in": "query",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startsAt",
+            "in": "query",
+            "description": "starts at",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endsAt",
+            "in": "query",
+            "description": "ends at",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Availabilities"
+          }
+        }
+      },
+      "post": {
+        "operationId": "postAvailabilities",
+        "description": "Availabilities",
+        "parameters": [
+          {
+            "name": "teacherId",
+            "in": "body",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startsAt",
+            "in": "body",
+            "description": "starts at",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endsAt",
+            "in": "body",
+            "description": "ends at",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Availabilities"
+          }
+        }
+      }
+    },
+    "/scheduling/availabilities/{availabilityId}": {
+      "x-categoryId": "availabilities",
+      "put": {
+        "operationId": "putAvailabilities",
+        "description": "Availabilities",
+        "parameters": [
+          {
+            "name": "availabilityId",
+            "in": "path",
+            "description": "availability id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startsAt",
+            "in": "body",
+            "description": "starts at",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endsAt",
+            "in": "body",
+            "description": "ends at",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Availabilities"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteAvailabilities",
+        "description": "Availabilities",
+        "responses": {
+          "204": {
+            "description": "Availabilities"
+          }
+        }
+      }
+    },
+    "/scheduling/clientAvailabilities": {
+      "x-categoryId": "availabilities",
+      "get": {
+        "operationId": "getClientAvailabilities",
+        "description": "client availabilities",
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "query",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "teacherId",
+            "in": "query",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startsAt",
+            "in": "query",
+            "description": "starts at",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endsAt",
+            "in": "query",
+            "description": "ends at",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Availabilities"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/charges/{chargeId}/refunds": {
+      "x-categoryId": "billing",
+      "post": {
+        "operationId": "postCharge",
+        "description": "Charge",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chargeId",
+            "in": "path",
+            "description": "charge id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "in": "body",
+            "description": "amount",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Charge"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/clients/{clientId}": {
+      "x-categoryId": "billing",
+      "get": {
+        "operationId": "getBillingInfo",
+        "description": "Get Billing Info",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Billing Info"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createBilling",
+        "description": "create billing",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "body",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "description",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create billing"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateBillingInfo",
+        "description": "update billing info",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "body",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update billing info"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/clients/{clientId}/billable": {
+      "x-categoryId": "billing",
+      "get": {
+        "operationId": "isBillable",
+        "description": "is billable",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "is billable"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/clients/{clientId}/charges": {
+      "x-categoryId": "billing",
+      "get": {
+        "operationId": "getCharges",
+        "description": "get charges",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get charges"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/clients/{clientId}/charges/{chargeId}": {
+      "x-categoryId": "billing",
+      "get": {
+        "operationId": "getCharges2",
+        "description": "get charges",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chargeId",
+            "in": "path",
+            "description": "charge id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get charges"
+          }
+        }
+      }
+    },
+    "/billing/discountCodes/{discountCodeId}": {
+      "x-categoryId": "billing",
+      "get": {
+        "operationId": "discountCode",
+        "description": "discount code",
+        "parameters": [
+          {
+            "name": "discountCodeId",
+            "in": "path",
+            "description": "discount code id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "discount code"
+          }
+        }
+      }
+    },
+    "/billing/plans": {
+      "x-categoryId": "billing",
+      "get": {
+        "operationId": "getPlans",
+        "description": "get plans",
+        "responses": {
+          "200": {
+            "description": "get plans"
+          }
+        }
+      }
+    },
+    "/identity/organizations/{organizationId}": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getOrganization",
+        "description": "get organization",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get organization"
+          }
+        }
+      },
+      "put": {
+        "operationId": "putOrganization",
+        "description": "update organization",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update organization"
+          }
+        }
+      }
+    },
+    "/identity/organizations/{organizationId}/clients": {
+      "x-categoryId": "clients",
+      "get": {
+        "operationId": "getClients",
+        "description": "get clients",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get clients"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createClient",
+        "description": "create client",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "defaultHourlyCost",
+            "in": "body",
+            "description": "default hourly cost",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "defaultLessonDuration",
+            "in": "body",
+            "description": "default lesson duration",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sendInvitation",
+            "in": "body",
+            "description": "send invitation",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "childUserId",
+            "in": "body",
+            "description": "child user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create client"
+          }
+        }
+      }
+    },
+    "/identity/organizations/{organizationId}/clients/{clientId}": {
+      "x-categoryId": "clients",
+      "get": {
+        "operationId": "getClientById",
+        "description": "get client by id",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get client by id"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateClient",
+        "description": "update client",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get client by id"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteClient",
+        "description": "delete client",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "clientId",
+            "in": "path",
+            "description": "client id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete client"
+          }
+        }
+      }
+    },
+    "/identity/organizations/{organizationId}/admins": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getAdmins",
+        "description": "get admins",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get admins"
+          }
+        }
+      }
+    },
+    "/identity/organizations/{organizationId}/teachers": {
+      "x-categoryId": "teachers",
+      "get": {
+        "operationId": "getTeachers",
+        "description": "get teachers",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get teachers"
+          }
+        }
+      }
+    },
+    "/identity/organizations/{organizationId}/teachers/{teacherId}": {
+      "x-categoryId": "teachers",
+      "get": {
+        "operationId": "getTeacherById",
+        "description": "get teacher by id",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "teacherId",
+            "in": "path",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get teacher by id"
+          }
+        }
+      }
+    },
+    "/scheduling/organizations/{organizationId}/teachers/{teacherId}/officeHours": {
+      "x-categoryId": "teachers",
+      "get": {
+        "operationId": "getOfficeHours",
+        "description": "get office hours",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "teacherId",
+            "in": "path",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get office hours"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createOfficeHour",
+        "description": "create office hour",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "teacherId",
+            "in": "path",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create office hour"
+          }
+        }
+      }
+    },
+    "/scheduling/organizations/{organizationId}/teachers/{teacherId}/officeHours/{officeHourId}": {
+      "x-categoryId": "teachers",
+      "put": {
+        "operationId": "updateOfficeHour",
+        "description": "update office hour",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "teacherId",
+            "in": "path",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update office hour"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteOfficeHour",
+        "description": "delete office hour",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "teacherId",
+            "in": "path",
+            "description": "teacher id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete office hour"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getBillingInfo",
+        "description": "get billing info",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get billing info"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateBillingInfo",
+        "description": "update billing info",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update billing info"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/subscription": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getSubscriptionInfo",
+        "description": "get subscription info",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get subscription info"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createSubscription",
+        "description": "create subscription",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create subscription"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateSubscription",
+        "description": "update subscription",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update subscription"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "cancelSubscription",
+        "description": "cancel subscription",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "cancel subscription"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/charges": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getCharges",
+        "description": "get charges",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get charges"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/charges/{chargeId}": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getChargeById",
+        "description": "get charges by id",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chargeId",
+            "in": "path",
+            "description": "charge id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get charges by id"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/balance": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getBalance",
+        "description": "get balance",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get balance"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/transfers": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getTransfers",
+        "description": "get transfers",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get transfers"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/transfers/{transferId}": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getTransferById",
+        "description": "get transfers by id",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "transferId",
+            "in": "path",
+            "description": "transfer id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get transfers by id"
+          }
+        }
+      }
+    },
+    "/billing/organizations/{organizationId}/transfers/{transferId}/charges": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getTransferCharges",
+        "description": "get transfer charges",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "transferId",
+            "in": "path",
+            "description": "transfer id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get transfer charges"
+          }
+        }
+      }
+    },
+    "/identity/organizations/{organizationId}/referral": {
+      "x-categoryId": "organizations",
+      "get": {
+        "operationId": "getReferral",
+        "description": "get referral",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "description": "organization id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get referral"
+          }
+        }
+      }
+    },
+    "/identity/referrals": {
+      "x-categoryId": "referrals",
+      "get": {
+        "operationId": "getAllReferrals",
+        "description": "get all referrals",
+        "responses": {
+          "200": {
+            "description": "get all referrals"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createReferral",
+        "description": "create referral",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create referral"
+          }
+        }
+      }
+    },
+    "/identity/referrals/{referralToken}": {
+      "x-categoryId": "referrals",
+      "put": {
+        "operationId": "updateReferral",
+        "description": "update referral",
+        "parameters": [
+          {
+            "name": "referralToken",
+            "in": "path",
+            "description": "referral token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "status",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update referral"
+          }
+        }
+      }
+    },
+    "/identity/users": {
+      "x-categoryId": "users",
+      "post": {
+        "operationId": "createUserChild",
+        "description": "create user",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create user"
+          }
+        }
+      }
+    },
+    "/identity/users/{userId}": {
+      "x-categoryId": "users",
+      "get": {
+        "operationId": "getUser",
+        "description": "get user by id",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get user by id"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateUser",
+        "description": "update user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update user"
+          }
+        }
+      },
+      "post": {
+        "operationId": "updateUser",
+        "description": "update user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update user"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteUser",
+        "description": "delete user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete user"
+          }
+        }
+      }
+    },
+    "/identity/users/{userId}/newIcalToken": {
+      "x-categoryId": "users",
+      "get": {
+        "operationId": "regenerateIcalToken",
+        "description": "regenerate ical token",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "regenerate ical token"
+          }
+        }
+      }
+    },
+    "/identity/users/whois": {
+      "x-categoryId": "users",
+      "get": {
+        "operationId": "whois",
+        "description": "whois",
+        "responses": {
+          "200": {
+            "description": "whois"
+          }
+        }
+      }
+    },
+    "/billing/users/{userId}": {
+      "x-categoryId": "users",
+      "get": {
+        "operationId": "getBillingInfo",
+        "description": "get billing info",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get billing info"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateBillingInfo",
+        "description": "update billing info",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "copyToClients",
+            "in": "body",
+            "description": "copy to clients",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update billing info"
+          }
+        }
+      }
+    }
+  }
+}
