@@ -3,7 +3,7 @@
   "author": "Eric Branner"
 }}}
 
-**How to add a client**
+# How to add a client
 
 Adding clients is simple using Fons:
 

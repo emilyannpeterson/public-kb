@@ -3,7 +3,7 @@
   "author": "Eric Branner"
 }}}
 
-**How to Schedule a Lesson**
+# How to Schedule a Lesson
 
 Scheduling a lesson is a breeze using Fons:
 

@@ -3,7 +3,7 @@
   "author": "Eric Branner"
 }}}
 
-**What are Processing Transactions?**
+# What are Processing Transactions?
 
 **	**
 

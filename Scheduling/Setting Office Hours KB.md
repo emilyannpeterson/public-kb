@@ -3,7 +3,7 @@
   "author": "Eric Branner"
 }}}
 
-**Setting Your Office Hours**
+# Setting Your Office Hours
 
 	
 

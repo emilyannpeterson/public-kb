@@ -1,0 +1,196 @@
+// Color schema
+
+// Colors
+
+$gray-lightest: #fbfbfb;
+$gray-lighter: #f7f7f7;
+$gray-light: #eee;
+$gray: #999999;
+$gray-dark: #464646;
+$gray-darker: #272b2d;
+$gray-darkest: #232323;
+
+$white: #fff;
+$black: #000;
+
+$lime: #a2c858;
+
+$cream: #ccc39d;
+
+$blue: #4682be;
+$blue-light: #559ba3;
+
+$platinum: #787878;
+
+$fons-bg: #FDFCF7;
+$fons-h: #49bd8a;
+
+
+// Background colors
+
+$bgc-primary: $fons-bg !default;
+$bgc-secondary: $gray-lightest !default;
+
+$bgc-shadow: rgba($black, 0.4) !default;
+$bgc-panel: transparent !default;
+$border-panel: 0 !default;
+
+$bgc-sidebar_item_trigger: $lime !default;
+$bgc-sidebar_item_trigger_active: $white !default;
+$bgc-sidebar_item_trigger_hover: $white !default;
+
+$bgc-sidebar_item: $gray-lighter !default;
+$bgc-sidebar_item_hover: $gray-dark !default;
+$bgc-sidebar_item_active: $gray-dark !default;
+
+$bgc-sidebar_item_nested: $gray-light !default;
+$bgc-sidebar_item_nested_hover: $cream !default;
+$bgc-sidebar_item_nested_active: $cream !default;
+
+$bgc-swagger_item_separator: $gray-light !default;
+$bgc-swagger_code_highlighting: $gray-darkest !default;
+$bgc-swagger_contrast: $gray-darker !default;
+
+$bgc-swagger_method--put: #c5862b !default;
+$bgc-swagger_method--get: #0f6ab4 !default;
+$bgc-swagger_method--post: #10a54a !default;
+$bgc-swagger_method--patch: #D38042 !default;
+$bgc-swagger_method--delete: #a41e22 !default;
+
+
+// Font colors
+
+$fsc-primary: $fons-h !default;
+$fsc-secondary: $blue-light !default;
+$fsc-additional: $platinum !default;
+$fsc-default: $black !default;
+
+$fsc-breadcrumbs_active: $blue-light !default;
+$fsc-breadcrumbs: $fsc-default !default;
+
+$fsc-sidebar_item: $gray-dark !default;
+$fsc-sidebar_item_hover: $white !default;
+$fsc-sidebar_item_active: $white !default;
+
+$fsc-sidebar_item_nested: $gray-dark !default;
+$fsc-sidebar_item_nested_hover: $cream !default;
+$fsc-sidebar_item_nested_active: $cream !default;
+
+$fsc-swagger_contrast: $gray-light !default;
+$fsc-swagger_code_status: $lime !default;
+
+// Font settings
+
+@import url('//fonts.googleapis.com/css?family=Work+Sans');
+
+$font-primary: 'Work Sans', sans-serif !default;
+$font-secondary: 'Work Sans', sans-serif !default;
+
+$font-size--base: 10px !default;
+$font-size--sm: 1.4rem !default;
+$font-size--md: 1.6rem !default;
+
+
+@import "docula";
+
+
+// Docula Components and general styles
+
+h1, h2 {
+  color: $fons-h;
+}
+
+.sidebar {
+  border-right: solid 1px $gray-light;
+}
+
+.article {
+  padding-top: 3em;
+
+  h1:first-child {
+    margin-top: 0;
+  }
+}
+
+
+
+
+// Navigation Header
+
+#fons-navigation {
+  position: relative;
+  color: $gray;
+  background: $white;
+  border-bottom: solid 1px $gray-light;
+
+  .header-section {
+    padding: 1rem 4rem;
+  }
+
+  .header-section:after {
+    content: '';
+    clear: both;
+    display: table;
+    visibility: hidden;
+  }
+
+  .logo-wrapper {
+    line-height: 2;
+  }
+
+  .logo-link {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #fons-logo {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    vertical-align: middle;
+  }
+
+  .logo-wrapper {
+    position: relative;
+    float: left;
+  }
+
+  .nav-menu {
+    position: relative;
+    float: right;
+  }
+
+  .nav-menu__ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none
+  }
+
+  .nav-menu__li {
+    display: inline-block;
+    margin-right: 15px;
+  }
+
+  li.nav-menu__li:last-child {
+    margin-right: 0;
+  }
+
+  .nav-menu__link {
+    color: #999999;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .nav-menu__link--trial {
+    color: #138b86;
+    padding: .5rem;
+    border-radius: .25rem;
+    border: solid 1px #138b86;
+  }
+
+  @media all and (max-width: 1024px) {
+    #fons-navigation {
+      display: none
+    }
+  }
+}
