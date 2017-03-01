@@ -1,3 +1,9 @@
+{{{
+  "title": "Step 1",
+  "author": "Eric Branner",
+  "date": "1/1/2017" 
+}}}
+
 The five steps on this Get Started page will help you get your Fons account set up according to our recommended best practices, to get you back to teaching as quickly and easily as possible. You can come back to this page at any time by clicking the Get Started tab in the navigation bar. This tab will remain in your navigation until all of the steps are complete.
 
 To begin, let's get you set up with the mobile Fons app, and then get your Fons Profile set up. Your Profile includes your teaching preferences as well as the personal information that your clients will see, so it's important to spend a few minutes getting it set up to your liking.
