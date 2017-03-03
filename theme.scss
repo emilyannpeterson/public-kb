@@ -122,6 +122,10 @@ h1, h2 {
   color: $gray;
   background: $white;
   border-bottom: solid 1px $gray-light;
+  display: none;
+  @media only screen and (min-width: 1024px) {
+    display: block;
+  }
 
   .header-section {
     padding: 1rem 4rem;
@@ -186,11 +190,5 @@ h1, h2 {
     padding: .5rem;
     border-radius: .25rem;
     border: solid 1px #138b86;
-  }
-
-  @media all and (max-width: 1024px) {
-    #fons-navigation {
-      display: none
-    }
   }
 }
