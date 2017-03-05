@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "fons.js",
+    "title": "Fons Developer API",
     "version": "v1",
     "contact": {
       "name": "Fons team",
