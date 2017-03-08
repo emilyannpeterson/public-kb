@@ -1,10 +1,12 @@
 {{{
-  "title": "Step 2: Try It Out",
+  "title": "Step 2: Try Out Setting Up An Appointment,
   "author": "Eric Branner",
   "date": "1/1/2017" 
 }}}
 
 Now that you've set up your profile, let's take Fons for a spin! We’re going to add your first client and schedule a lesson. Fons shines at streamlining your business.
+
+[![Try it Out](http://img.youtube.com/vi/F1DrYbkHJsg/0.jpg)](http://www.youtube.com/watch?v=F1DrYbkHJsg "Try it Out")
 
 **Create Your First Client**
 * Select the Clients tab and click Invite New Client. Enter name and email, set lesson rate and duration, and make sure their per/lesson cost is correct. Since you’re probably testing on yourself or a friend, you can make the lesson amount as low as zero. Remember, if the lesson amount is zero, your client will not be asked to enter a card or set up billing. A nominal lesson fee such as $1 is probably best.

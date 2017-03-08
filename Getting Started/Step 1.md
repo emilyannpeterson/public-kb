@@ -8,6 +8,9 @@ The five steps on this Get Started page will help you get your Fons account set 
 
 To begin, let's get you set up with the mobile Fons app, and then get your Fons Profile set up. Your Profile includes your teaching preferences as well as the personal information that your clients will see, so it's important to spend a few minutes getting it set up to your liking.
 
+[![Setup Your Profile](http://img.youtube.com/vi/JwPlkNam9XQ/0.jpg)](http://www.youtube.com/watch?v=JwPlkNam9XQ "Setup Your Profile")
+
+
 **Download the App**
 Click the button below to go to the App Store and download Fons:
 
