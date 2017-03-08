@@ -1,5 +1,5 @@
 {{{
-  "title": "Step 1",
+  "title": "Step 1: Set Up Your Profile",
   "author": "Eric Branner",
   "date": "1/1/2017" 
 }}}
