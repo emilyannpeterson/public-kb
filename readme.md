@@ -25,11 +25,7 @@ The Fons’ student app also makes scheduling and paying for lessons easy for yo
 
 ## How Much Does Fons Cost?
 
-Fons charges a subscription fee of $39.95/month.
-
-Credit card fees are currently 2.9%+$.30 a transaction. There is also a .5% ACH fee for bank transfers. 
-
-Fons takes nothing from transactions. These are just the fees the credit card processing companies charge.   
+Cost is based on which plan you are on. There is a $0.00/month plan called Basic, as well as a Pro plan for $29.95/month. [See our pricing page for more information](https://fons.io/pricing).
 
 ## Getting Started -Your Profile
 
